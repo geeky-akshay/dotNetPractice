@@ -4,12 +4,16 @@ namespace ConsoleApplicationNetMongo
 {
     public class Program
     {
+		public static string DATABASE_NAME = "school";
+		public static string COLLECTION_NAME = "studentDetails";
+
         public static void Main(string[] args)
         {
-            DisplayMenu();
+
+			
         }
 
-		public void DisplayMenu()
+		private void DisplayMenu()
 		{
 			Console.WriteLine("_____MENU_____");
 			Console.WriteLine();
@@ -22,7 +26,7 @@ namespace ConsoleApplicationNetMongo
 			Console.WriteLine();
 		}
 
-		public Student GetStudent()
+		private Student GetStudent()
 		{
 			Console.WriteLine("Enter First Name : ");
 			string firstName = Console.ReadLine();
@@ -39,6 +43,29 @@ namespace ConsoleApplicationNetMongo
 			var student = new Student (firstName: firstName, lastName: lastName, age: age, address: address);
 
 			return student;
+		}
+
+		private void PerformOperations()
+		{
+			var choice;
+			var mongoCRUD = new MongoDBCRUD();
+
+			do
+			{
+				DisplayMenu();
+				Console.Write("Enter your choice : ");
+				choice = Console.ReadLine();
+
+				switch (choice)
+				{
+					case 1 :
+						{
+							mongoCRUD.InsertStudent(GetStudent());
+						}
+						break;
+				}
+			} while (choice != 6);
+			
 		}
     }
 }

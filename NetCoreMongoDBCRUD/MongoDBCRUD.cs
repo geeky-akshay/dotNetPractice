@@ -18,8 +18,8 @@ namespace ConsoleApplicationNetMongo
 		private void InitializeDatabaseParameters()
 		{
 			mongoClient = new MongoClient();
-			mongoDatabase = new MongoDatabase("School");
-			studentsCollection = mongoDatabase.GetCollection<Student>("StudentDetails");
+			mongoDatabase = new MongoDatabase(Program.DATABASE_NAME);
+			studentsCollection = mongoDatabase.GetCollection(Program.COLLECTION_NAME);
 		}
 
 		public bool InsertStudent(Student student)
@@ -53,7 +53,9 @@ namespace ConsoleApplicationNetMongo
 		public Student FindStudent()
 		{
 			try
-			{}
+			{
+				// TO-DO
+			}
 			catch (Exception e)
 			{
 				Console.WriteLine(e.Message);

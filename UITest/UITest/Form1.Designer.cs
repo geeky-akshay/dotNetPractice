@@ -32,12 +32,14 @@
             this.olvColumnName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.btnAddAttachments = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.btnPrintPreview = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.olvAttachments)).BeginInit();
             this.SuspendLayout();
             // 
             // olvAttachments
             // 
             this.olvAttachments.AllColumns.Add(this.olvColumnName);
+            this.olvAttachments.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.olvAttachments.CellEditUseWholeCell = false;
             this.olvAttachments.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumnName});
@@ -52,6 +54,7 @@
             this.olvAttachments.UseCompatibleStateImageBehavior = false;
             this.olvAttachments.View = System.Windows.Forms.View.LargeIcon;
             this.olvAttachments.CellClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.olvAttachments_CellClick);
+            this.olvAttachments.CellRightClick += new System.EventHandler<BrightIdeasSoftware.CellRightClickEventArgs>(this.olvAttachments_CellRightClick);
             // 
             // olvColumnName
             // 
@@ -84,11 +87,22 @@
             this.webBrowser1.Size = new System.Drawing.Size(224, 250);
             this.webBrowser1.TabIndex = 2;
             // 
+            // btnPrintPreview
+            // 
+            this.btnPrintPreview.Location = new System.Drawing.Point(12, 110);
+            this.btnPrintPreview.Name = "btnPrintPreview";
+            this.btnPrintPreview.Size = new System.Drawing.Size(80, 23);
+            this.btnPrintPreview.TabIndex = 3;
+            this.btnPrintPreview.Text = "Print Preview";
+            this.btnPrintPreview.UseVisualStyleBackColor = true;
+            this.btnPrintPreview.Click += new System.EventHandler(this.btnPrintPreview_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 265);
+            this.Controls.Add(this.btnPrintPreview);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.btnAddAttachments);
             this.Controls.Add(this.olvAttachments);
@@ -106,6 +120,7 @@
         private System.Windows.Forms.Button btnAddAttachments;
         private BrightIdeasSoftware.OLVColumn olvColumnName;
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.Button btnPrintPreview;
     }
 }
 

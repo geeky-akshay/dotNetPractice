@@ -114,13 +114,40 @@ namespace UITest
             }
             else
             {
-                webBrowser1.Navigate(lstAttachments[selectedIndex - 1].FullName);
+                NavigateBrowser(lstAttachments[selectedIndex - 1].FullName);
             }
         }
 
         private void olvAttachments_CellClick(object sender, CellClickEventArgs e)
         {
-            webBrowser1.Navigate(lstAttachments.Find(x => x.FullName == olvAttachments.SelectedObject.ToString()).FullName);
+            NavigateBrowser(lstAttachments.Find(x => x.FullName == olvAttachments.SelectedObject.ToString()).FullName);
+        }
+
+        private void NavigateBrowser(string filePath)
+        {
+            if (filePath.EndsWith(".csv"))
+            {
+                webBrowser1.DocumentText = GetHTMLFromCSV(filePath);
+            }
+            else
+            {
+                webBrowser1.Navigate(filePath);
+            }
+        }
+
+        private string GetHTMLFromCSV(string csvFilePath)
+        {
+            StringBuilder stringHtml = new StringBuilder();
+            string[] lines = System.IO.File.ReadAllLines(csvFilePath);
+
+            stringHtml.Append("<html><body><table border=1>");
+            foreach (var line in lines)
+            {
+                stringHtml.Append("<tr><td>" + string.Join("</td><td>", line.Split(',')) + "</td><tr>");
+            }
+            stringHtml.Append("</html></body></table>");
+
+            return stringHtml.ToString();
         }
     }
 }

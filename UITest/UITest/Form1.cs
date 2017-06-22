@@ -143,7 +143,7 @@ namespace UITest
             stringHtml.Append("<html><body><table border=1>");
             foreach (var line in lines)
             {
-                stringHtml.Append("<tr><td>" + string.Join("</td><td>", line.Split(',')) + "</td><tr>");
+                stringHtml.Append("<tr><td>" + string.Join("</td><td>", line.Split(',')) + "</td></tr>");
             }
             stringHtml.Append("</html></body></table>");
 
